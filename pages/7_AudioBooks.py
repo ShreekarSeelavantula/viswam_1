@@ -384,7 +384,7 @@ def show_audio_book_page(story, section, page_number):
         with main_col1:
             try:
                 image_bytes = base64.b64decode(images[0])
-                st.image(image_bytes, width=180, caption="")
+                st.image(image_bytes, width=120, caption="")
             except:
                 st.info("📷 Image 1")
     
@@ -423,20 +423,20 @@ def show_audio_book_page(story, section, page_number):
     # Volume control on the right
     with main_col3:
         st.markdown("**🔊 Volume**")
-        volume = st.slider("", min_value=0, max_value=100, value=70, key=f"volume_page_{page_number}")
+        volume = st.slider("", min_value=0, max_value=100, value=70, key=f"volume_page_{page_number}", orientation="vertical", help="Adjust audio volume")
         
-        # Bottom-right image
+        # Bottom-right image (smaller size for audio books)
         if len(images) >= 2:
             try:
                 image_bytes = base64.b64decode(images[1])
-                st.image(image_bytes, width=180, caption="")
+                st.image(image_bytes, width=120, caption="")
             except:
                 st.info("📷 Image 2")
         elif len(images) == 1 and len(images) < 2:
             # Use first image again if only one available
             try:
                 image_bytes = base64.b64decode(images[0])
-                st.image(image_bytes, width=180, caption="")
+                st.image(image_bytes, width=120, caption="")
             except:
                 st.info("📷 Image")
     
@@ -511,9 +511,10 @@ def show_audio_book_page(story, section, page_number):
 
 
 def create_male_avatar_svg(is_speaking=False):
-    """Create realistic male avatar with lip-sync animation"""
-    mouth_shape = "M60,90 Q80,100 100,90" if is_speaking else "M70,95 Q80,98 90,95"
-    blink_class = "blink" if is_speaking else ""
+    """Create realistic male avatar with enhanced lip-sync animation like Talking Tom"""
+    mouth_path = "M60,85 Q75,100 90,85 Q80,95 75,97 Q70,95 60,85 Z" if is_speaking else "M68,90 Q75,93 82,90"
+    blink_class = "eyes-blink" if is_speaking else ""
+    speaking_class = "mouth-speaking" if is_speaking else ""
     
     return f"""
     <svg width="150" height="150" viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg">
@@ -524,21 +525,61 @@ def create_male_avatar_svg(is_speaking=False):
             </radialGradient>
             <style>
                 .mouth-speaking {{
-                    animation: speak 0.5s ease-in-out infinite alternate;
+                    animation: talkingMouth 0.3s ease-in-out infinite;
+                    transform-origin: 75px 90px;
                 }}
                 .eyes-blink {{
-                    animation: blink 2s ease-in-out infinite;
+                    animation: naturalBlink 3s ease-in-out infinite;
                 }}
-                @keyframes speak {{
-                    0% {{ d: path("M70,95 Q80,98 90,95"); }}
-                    100% {{ d: path("M60,90 Q80,105 100,90"); }}
+                .speaking-glow {{
+                    animation: speakingGlow 1s ease-in-out infinite alternate;
                 }}
-                @keyframes blink {{
-                    0%, 90%, 100% {{ transform: scaleY(1); }}
-                    5% {{ transform: scaleY(0.1); }}
+                @keyframes talkingMouth {{
+                    0% {{ 
+                        d: path("M68,90 Q75,93 82,90"); 
+                        fill: none;
+                    }}
+                    25% {{ 
+                        d: path("M65,88 Q75,95 85,88 Q78,92 75,94 Q72,92 65,88 Z"); 
+                        fill: #FF6B6B;
+                    }}
+                    50% {{ 
+                        d: path("M60,85 Q75,100 90,85 Q80,95 75,97 Q70,95 60,85 Z"); 
+                        fill: #FF4444;
+                    }}
+                    75% {{ 
+                        d: path("M65,88 Q75,95 85,88 Q78,92 75,94 Q72,92 65,88 Z"); 
+                        fill: #FF6B6B;
+                    }}
+                    100% {{ 
+                        d: path("M68,90 Q75,93 82,90"); 
+                        fill: none;
+                    }}
+                }}
+                @keyframes naturalBlink {{
+                    0%, 85%, 100% {{ transform: scaleY(1); }}
+                    90% {{ transform: scaleY(0.2); }}
+                    95% {{ transform: scaleY(1); }}
+                }}
+                @keyframes speakingGlow {{
+                    0% {{ 
+                        stroke: #FF6B6B; 
+                        stroke-width: 2; 
+                        opacity: 0.4; 
+                        r: 60;
+                    }}
+                    100% {{ 
+                        stroke: #FF3333; 
+                        stroke-width: 4; 
+                        opacity: 0.8; 
+                        r: 65;
+                    }}
                 }}
             </style>
         </defs>
+        
+        <!-- Speaking glow effect -->
+        {'<circle cx="75" cy="75" r="60" fill="none" class="speaking-glow"/>' if is_speaking else ''}
         
         <!-- Face -->
         <circle cx="75" cy="75" r="60" fill="url(#faceGradient)" stroke="#D2691E" stroke-width="2"/>
@@ -563,12 +604,12 @@ def create_male_avatar_svg(is_speaking=False):
         <!-- Nose -->
         <path d="M75,70 L75,85 M70,82 Q75,85 80,82" stroke="#CD853F" stroke-width="2" fill="none"/>
         
-        <!-- Mouth -->
-        <path d="{mouth_shape}" stroke="#8B4513" stroke-width="3" fill="{'#FF6B6B' if is_speaking else 'none'}" 
-              class="{'mouth-speaking' if is_speaking else ''}"/>
+        <!-- Mouth with enhanced animation -->
+        <path d="{mouth_path}" stroke="#8B4513" stroke-width="3" fill="{'#FF6B6B' if is_speaking else 'none'}" 
+              class="{speaking_class}"/>
         
-        <!-- Speaking animation glow -->
-        {'<circle cx="75" cy="75" r="65" fill="none" stroke="#FF6B6B" stroke-width="3" opacity="0.6" class="pulse"/>' if is_speaking else ''}
+        <!-- Tongue for speaking effect -->
+        {'<ellipse cx="75" cy="92" rx="8" ry="3" fill="#FF9999" opacity="0.7" class="mouth-speaking"/>' if is_speaking else ''}
     </svg>
     """
 
