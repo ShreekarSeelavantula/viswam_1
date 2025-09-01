@@ -1,0 +1,2 @@
+This directory will store individual story files as JSON documents.
+Each story will be saved as a separate file with the story ID as the filename.

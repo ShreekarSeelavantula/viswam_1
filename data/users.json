@@ -1,0 +1,81 @@
+{
+  "shreekar157200419@gmail.com": {
+    "name": "Shreekar Seelavantula",
+    "email": "shreekar157200419@gmail.com",
+    "password": "e0e2193f5f5099cc8f2b5fe5db35f85ef6c1311c907397e1e2eed6df20482aa6",
+    "preferred_language": "Telugu",
+    "state": "Telangana",
+    "created_at": "2025-07-28T07:23:56.587864",
+    "stories": [
+      "051e2449-f492-4a5f-b96c-3839c41eddf1",
+      "70184c23-97cc-4b38-8bbb-fc14f318c9cb"
+    ]
+  },
+  "priya.sharma@email.com": {
+    "name": "Priya Sharma",
+    "email": "priya.sharma@email.com",
+    "password": "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8",
+    "preferred_language": "Hindi",
+    "state": "Rajasthan",
+    "created_at": "2024-01-15T10:30:00",
+    "stories": [
+      "cc9485e5-6e05-4068-8816-d3516ee6fbca"
+    ]
+  },
+  "rajesh.kumar@email.com": {
+    "name": "Rajesh Kumar",
+    "email": "rajesh.kumar@email.com",
+    "password": "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8",
+    "preferred_language": "Bengali",
+    "state": "West Bengal",
+    "created_at": "2024-01-20T14:15:00",
+    "stories": [
+      "09c6d4ac-52e4-4fc6-b404-b2df858ad22f"
+    ]
+  },
+  "anita.patel@email.com": {
+    "name": "Anita Patel",
+    "email": "anita.patel@email.com",
+    "password": "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8",
+    "preferred_language": "Gujarati",
+    "state": "Gujarat",
+    "created_at": "2024-02-01T09:45:00",
+    "stories": [
+      "bb692eb3-2e8b-4160-b45f-6138b511b6ac"
+    ]
+  },
+  "meera.reddy@email.com": {
+    "name": "Meera Reddy",
+    "email": "meera.reddy@email.com",
+    "password": "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8",
+    "preferred_language": "Telugu",
+    "state": "Andhra Pradesh",
+    "created_at": "2024-02-05T16:20:00",
+    "stories": [
+      "de19fdc5-07d4-4fba-b0f4-bf5e7fcf41b5"
+    ]
+  },
+  "shreekar1572004@gmail.com": {
+    "name": "Shreekar Seelavantula",
+    "email": "shreekar1572004@gmail.com",
+    "password": "e0e2193f5f5099cc8f2b5fe5db35f85ef6c1311c907397e1e2eed6df20482aa6",
+    "preferred_language": "Telugu",
+    "state": "Telangana",
+    "created_at": "2025-07-28T07:49:38.803065",
+    "stories": [
+      "e43645d7-1b52-400e-8395-d6060e3e2b29"
+    ]
+  },
+  "shreekar1572004191@gmail.com": {
+    "name": "Shreekar Seelavantula",
+    "email": "shreekar1572004191@gmail.com",
+    "password": "180a9eb9b398a1e9228120757d51d12e4f6354ba75c6441c94dbfda337a341bd",
+    "preferred_language": "Telugu",
+    "state": "Telangana",
+    "created_at": "2025-09-01T14:27:45.109410",
+    "stories": [
+      "468de73a-08de-435f-bc42-a602495f754c",
+      "b72f868f-fee6-48e7-b00b-69fa2f015851"
+    ]
+  }
+}

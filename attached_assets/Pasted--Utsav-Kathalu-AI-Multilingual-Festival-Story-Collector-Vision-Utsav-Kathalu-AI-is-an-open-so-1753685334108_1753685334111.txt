@@ -1,0 +1,97 @@
+🌸 Utsav Kathalu AI — Multilingual Festival Story Collector
+🪔 Vision
+Utsav Kathalu AI is an open-source, AI-powered Streamlit application that collects and curates culturally rich festival stories from people across India. The app supports multilingual voice and text uploads, uses AI to clean and correct natural language inputs, and finally presents stories as interactive virtual books — beautifully animated, with page-turn effects and visuals.
+
+This platform also helps build a clean Indic language corpus, enabling future research and fine-tuning of AI/ML models related to regional language understanding, culture preservation, and storytelling.
+
+💡 Project Goals
+Collect festival-related stories in multiple Indian languages
+
+Allow upload of stories via voice (converted using Whisper or similar) or text
+
+Automatically clean and correct grammar using AI/NLP models
+
+Organize the story into sections/pages, each with related images
+
+Display final stories in a virtual book with animations for page turning
+
+Provide an engaging and professional UI/UX experience for storytelling
+
+Store and manage user accounts, sessions, and personal story uploads
+
+✅ Progress So Far
+✅ Project cloned into local or Replit environment
+
+✅ Initial README.md config fixed for Hugging Face compatibility
+
+✅ Streamlit setup completed
+
+✅ Folder structure designed for modularity
+
+✅ Shared clear idea and flow for:
+
+Homepage UI
+
+Signup/Login pages
+
+Upload methods
+
+AI integration for correcting data
+
+Virtual book viewer with animation
+
+✅ Planned deployment targets: Replit + Hugging Face Spaces
+
+📄 User Flow & Page Responsibilities
+Page	Description
+Home	Beautifully designed landing page with an Explore button
+Auth	User signup/login page with required fields (name, email, password, language, etc.)
+Dashboard	After login, shows welcome message and options to upload stories
+Upload	User chooses between text or voice input and specifies number of sections; uploads related images per section
+AI Cleaner	Processes text input and auto-corrects grammar/phrasing using AI
+Virtual Book	Displays the final cleaned story in a page-by-page viewer with animations, embedded images, and next/prev navigation
+
+🧾 Folder Structure (Current and Planned)
+bash
+Copy
+Edit
+utsav-kathalu-ai/
+│
+├── app.py                  # Streamlit entry point
+├── requirements.txt        # Dependencies
+├── README.md               # This file (Replit prompt)
+├── .replit                 # Streamlit run config
+│
+├── utils/
+│   ├── auth.py             # Signup/login/session logic
+│   ├── speech_to_text.py   # Whisper or voice-to-text
+│   ├── text_cleaner.py     # AI correction module
+│   └── db.py               # Data storage/logic
+│
+├── pages/
+│   ├── 1_Home.py
+│   ├── 2_Auth.py
+│   ├── 3_Upload.py
+│   ├── 4_VirtualBook.py
+│
+├── assets/
+│   ├── images/
+│   ├── css/
+│   └── js/
+│
+├── data/
+│   ├── users.json
+│   └── stories/
+🧠 Technologies Used
+Frontend: Streamlit for fast interactive UI
+
+AI Models:
+
+Whisper for speech-to-text
+
+OpenAI or similar NLP model for sentence correction
+
+Deployment: Replit + Hugging Face Spaces
+
+Storage: JSON/local file-based for MVP (can upgrade to Firebase or DB later)
+
