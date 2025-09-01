@@ -734,9 +734,43 @@ def show_audio_navigation(total_pages):
         if st.button("📖 View Virtual Books", key="switch_to_virtual"):
             st.switch_page("pages/6_PublicBooks.py")
     
-    # Progress bar
-    progress = (current_page + 1) / total_pages
-    st.progress(progress, text=f"Listening Progress: {int(progress * 100)}%")
+    # Dynamic progress bar
+    if 'audio_start_time' not in st.session_state:
+        st.session_state.audio_start_time = {}
+    if 'audio_duration' not in st.session_state:
+        st.session_state.audio_duration = {}
+    
+    # Calculate progress based on current page and audio playback
+    page_progress = (current_page + 1) / total_pages
+    
+    # Add audio progress within current page if playing
+    current_page_key = f'audio_playing_page_{current_page}'
+    if st.session_state.get(current_page_key, False):
+        # Simulate audio progress for demonstration
+        import time
+        current_time = time.time()
+        if current_page not in st.session_state.audio_start_time:
+            st.session_state.audio_start_time[current_page] = current_time
+        
+        # Estimate audio duration (5 seconds for demo)
+        estimated_duration = 5.0
+        elapsed_time = current_time - st.session_state.audio_start_time[current_page]
+        audio_progress = min(elapsed_time / estimated_duration, 1.0)
+        
+        # Combine page progress with current audio progress
+        total_progress = ((current_page - 1) + audio_progress) / total_pages if current_page > 0 else audio_progress / total_pages
+        progress_text = f"🎵 Playing Chapter {current_page} - {int(audio_progress * 100)}% complete"
+        
+        # Auto-advance to next page when audio finishes
+        if audio_progress >= 1.0:
+            st.session_state[current_page_key] = False
+            if current_page in st.session_state.audio_start_time:
+                del st.session_state.audio_start_time[current_page]
+    else:
+        total_progress = page_progress
+        progress_text = f"Listening Progress: {int(page_progress * 100)}%"
+    
+    st.progress(total_progress, text=progress_text)
 
 if __name__ == "__main__":
     main()
