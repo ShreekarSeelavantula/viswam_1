@@ -423,7 +423,7 @@ def show_audio_book_page(story, section, page_number):
     # Volume control on the right
     with main_col3:
         st.markdown("**🔊 Volume**")
-        volume = st.slider("", min_value=0, max_value=100, value=70, key=f"volume_page_{page_number}", orientation="vertical", help="Adjust audio volume")
+        volume = st.slider("", min_value=0, max_value=100, value=70, key=f"volume_page_{page_number}", help="Adjust audio volume")
         
         # Bottom-right image (smaller size for audio books)
         if len(images) >= 2:
