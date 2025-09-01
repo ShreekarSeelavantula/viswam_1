@@ -6,15 +6,30 @@
     "state": "Delhi",
     "language": "English",
     "registration_date": "2024-01-15T10:30:00",
-    "stories": ["sample-diwali-story"]
+    "stories": [
+      "sample-diwali-story"
+    ]
   },
   "voice@example.com": {
-    "name": "Rajesh Kumar", 
+    "name": "Rajesh Kumar",
     "email": "voice@example.com",
     "password": "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8",
     "state": "Maharashtra",
     "language": "Hindi",
     "registration_date": "2024-01-20T15:45:00",
-    "stories": ["sample-audio-story"]
+    "stories": [
+      "sample-audio-story"
+    ]
+  },
+  "shreekar1572004192@gmail.com": {
+    "name": "Shreekar Seelavantula",
+    "email": "shreekar1572004192@gmail.com",
+    "password": "e0363d079a9c8af72780f8bc560669a7fdbb547d567cb9a59270cf2fe394d6b0",
+    "preferred_language": "Hindi",
+    "state": "Andhra Pradesh",
+    "created_at": "2025-09-01T17:35:03.870947",
+    "stories": [
+      "f3977d50-0c4a-44e3-baa4-399286f44820"
+    ]
   }
 }

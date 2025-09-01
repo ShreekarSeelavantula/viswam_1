@@ -399,7 +399,20 @@ def show_audio_book_page(story, section, page_number):
         else:
             avatar_svg = create_female_avatar_svg(is_playing)
         
+        # Display narrator info
         st.markdown(f"""
+        <div style="text-align: center; margin-bottom: 1rem;">
+            <div style="font-size: 1.5rem; font-weight: bold; color: #2C3E50; margin-bottom: 0.5rem;">
+                {narrator_name}
+            </div>
+            <div style="font-size: 1rem; color: #7F8C8D;">
+                {'🎙️ Currently Speaking...' if is_playing else '⏸️ Ready to Narrate'}
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        # Display animated avatar using HTML component
+        st.components.v1.html(f"""
         <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; 
                     background: linear-gradient(135deg, #FFE5E5 0%, #E5F5FF 100%); 
                     border-radius: 20px; padding: 2rem; margin: 1rem 0;
@@ -408,22 +421,13 @@ def show_audio_book_page(story, section, page_number):
             <div id="narrator_page_{page_number}" style="margin-bottom: 1rem; transition: all 0.3s ease;">
                 {avatar_svg}
             </div>
-            
-            <div style="text-align: center;">
-                <div style="font-size: 1.5rem; font-weight: bold; color: #2C3E50; margin-bottom: 0.5rem;">
-                    {narrator_name}
-                </div>
-                <div style="font-size: 1rem; color: #7F8C8D;">
-                    {'🎙️ Currently Speaking...' if is_playing else '⏸️ Ready to Narrate'}
-                </div>
-            </div>
         </div>
-        """, unsafe_allow_html=True)
+        """, height=250)
     
     # Volume control on the right
     with main_col3:
         st.markdown("**🔊 Volume**")
-        volume = st.slider("", min_value=0, max_value=100, value=70, key=f"volume_page_{page_number}", help="Adjust audio volume")
+        volume = st.slider("Volume", min_value=0, max_value=100, value=70, key=f"volume_page_{page_number}", help="Adjust audio volume", label_visibility="hidden")
         
         # Bottom-right image (smaller size for audio books)
         if len(images) >= 2:
