@@ -1,1 +1,2 @@
 data/stories/*.json filter=lfs diff=lfs merge=lfs -text
+data/stories/f3977d50-0c4a-44e3-baa4-399286f44820.json filter=lfs diff=lfs merge=lfs -text
